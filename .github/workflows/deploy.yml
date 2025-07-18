@@ -34,7 +34,7 @@ jobs:
     - name: sed_time
       id: sed
       run: | 
-        sed -i 's/v1.0.0/v1.0.1/g' app.py
+        sed -i 's/V1.0.0/V1.0.1/g' app.py
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:

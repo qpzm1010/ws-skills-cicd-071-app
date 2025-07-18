@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 env:
-  AWS_REGION: ap-northeast-2
+  AWS_REGION: us-east-1
   ECR_REPOSITORY: ws-cicd-repository/cicd-application
   ECS_CLUSTER: cicd-cluster
   ECS_SERVICE: cicd-service

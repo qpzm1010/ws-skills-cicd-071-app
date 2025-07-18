@@ -31,7 +31,10 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v2
-
+    - name: sed_time
+      id: sed
+      run: | 
+        sed -i 's/v1.0.0/v1.0.1/g' app.py
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
@@ -73,11 +76,4 @@ jobs:
         cluster: ${{ env.ECS_CLUSTER }}
         wait-for-service-stability: true
 
-    - name: Update version file
-      run: |
-        echo "V1.0.1" > version.txt
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add version.txt
-        git commit -m "Update version to V1.0.1" || echo "No changes to commit"
-        git push || echo "Push failed or no changes"
+
